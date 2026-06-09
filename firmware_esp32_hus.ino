@@ -184,7 +184,7 @@ void updateMachine()
             }
             else
             {
-                stepper.setSpeed(-1500);
+                stepper.setSpeed(-3000);
                 stepper.runSpeed();
             }
 
