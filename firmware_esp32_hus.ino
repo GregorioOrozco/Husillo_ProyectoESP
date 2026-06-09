@@ -16,6 +16,7 @@ const long TOTAL_TRAVEL_STEPS = 160000;
 const long CENTER_POS = TOTAL_TRAVEL_STEPS / 2;
 
 const long MIN_POSITION = 1500;
+const long MAX_POSITION = 159000;
 const long BACKOFF_STEPS = 1500;
 
 // --------------------
@@ -320,7 +321,7 @@ void updateMachine()
             break;
         
         case STOPPED:
-            break;
+        break;
 
         default:
             break;
@@ -385,6 +386,12 @@ void processCommand(String cmd)
 
         Serial.print("TARGET:");
         Serial.println(targetPosition);
+
+        Serial.print("MIN:");
+        Serial.println(MIN_POSITION);
+
+        Serial.print("MAX:");
+        Serial.println(MAX_POSITION);
 
         return;
     }
@@ -463,8 +470,8 @@ void processCommand(String cmd)
         if(target < MIN_POSITION)
             target = MIN_POSITION;
 
-        if(target > TOTAL_TRAVEL_STEPS)
-            target = TOTAL_TRAVEL_STEPS;
+        if(target > MAX_POSITION)
+            target = MAX_POSITION;
 
         if(state == IDLE)
         {
